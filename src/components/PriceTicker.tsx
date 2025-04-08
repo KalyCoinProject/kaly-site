@@ -4,44 +4,53 @@ import React, { useEffect, useState } from "react";
 import {
   fetchCryptoData,
   formatCurrency,
+  formatMarketCap,
   type CoinMarketCapData,
 } from "@/lib/utils";
 import { RefreshCw } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface PriceTickerProps {
   symbol?: string;
   refreshInterval?: number; // in milliseconds
+  className?: string;
 }
 
 export function PriceTicker({
   symbol = "KLC",
-  refreshInterval = 60000, // Default refresh every minute
+  refreshInterval = 120000, // Default refresh every 2 minutes to respect API limits
+  className,
 }: PriceTickerProps) {
   const [cryptoData, setCryptoData] = useState<CoinMarketCapData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
+  const [isRefreshing, setIsRefreshing] = useState(false);
 
-  const fetchData = async () => {
+  const fetchData = async (showRefreshing = true) => {
     try {
-      setLoading(true);
+      if (showRefreshing) setIsRefreshing(true);
       setError(null);
+      console.debug('Fetching crypto data...');
       const data = await fetchCryptoData(symbol);
+      if (!data) throw new Error("Failed to fetch data");
+      console.debug('Received crypto data:', data);
       setCryptoData(data);
       setLastUpdated(new Date());
     } catch (err) {
+      console.error('Error in fetchData:', err);
       setError("Failed to fetch cryptocurrency data");
-      console.error(err);
     } finally {
       setLoading(false);
+      setIsRefreshing(false);
     }
   };
 
   useEffect(() => {
-    fetchData();
+    fetchData(false);
 
     // Set up interval for refreshing data
-    const intervalId = setInterval(fetchData, refreshInterval);
+    const intervalId = setInterval(() => fetchData(true), refreshInterval);
 
     // Clean up interval on component unmount
     return () => clearInterval(intervalId);
@@ -58,16 +67,8 @@ export function PriceTicker({
     return value >= 0 ? "text-green-400" : "text-red-400";
   };
 
-  // Format market cap in millions/billions
-  const formatMarketCap = (value: number) => {
-    if (value >= 1000000000) {
-      return `${(value / 1000000000).toFixed(1)}B`;
-    }
-    return `${(value / 1000000).toFixed(1)}M`;
-  };
-
   return (
-    <div className="bg-black/30 backdrop-blur-md rounded-2xl p-6 mb-12 border border-white/10 shadow-xl">
+    <div className={cn("bg-black/30 backdrop-blur-md rounded-2xl p-6 mb-12 border border-white/10 shadow-xl hover:border-white/20 transition-colors", className)}>
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
           <div className="h-8 w-8 rounded-full bg-amber-500 flex items-center justify-center overflow-hidden">
@@ -83,12 +84,15 @@ export function PriceTicker({
         {lastUpdated && (
           <div className="flex items-center gap-2 text-xs text-white/60">
             <button
-              onClick={fetchData}
-              className="p-1 hover:bg-white/10 rounded-full transition-colors"
-              disabled={loading}
+              onClick={() => fetchData(true)}
+              className={cn(
+                "p-1 hover:bg-white/10 rounded-full transition-colors",
+                isRefreshing && "animate-spin"
+              )}
+              disabled={isRefreshing}
               title="Refresh data"
             >
-              <RefreshCw size={14} className={loading ? "animate-spin" : ""} />
+              <RefreshCw size={14} />
             </button>
             <span>Updated {lastUpdated.toLocaleTimeString()}</span>
           </div>
@@ -99,7 +103,7 @@ export function PriceTicker({
         <div className="bg-red-500/20 text-white p-4 rounded-xl text-center">
           <p>{error}</p>
           <button
-            onClick={fetchData}
+            onClick={() => fetchData(true)}
             className="mt-2 px-3 py-1 bg-white/10 hover:bg-white/20 rounded-md text-sm transition-colors"
           >
             Try Again
@@ -119,30 +123,32 @@ export function PriceTicker({
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-white">
-          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4">
+          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 hover:bg-white/10 transition-colors">
             <p className="text-sm text-white/70 mb-1">Current Price</p>
             <p className="text-2xl font-bold">
-              {cryptoData
-                ? formatCurrency(cryptoData.quote.USD.price)
-                : "$0.0348"}
+              {cryptoData ? formatCurrency(cryptoData.quote.USD.price) : "-"}
             </p>
           </div>
-          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4">
+          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 hover:bg-white/10 transition-colors">
             <p className="text-sm text-white/70 mb-1">24h Change</p>
             <p
-              className={`text-2xl font-bold ${cryptoData ? getChangeColorClass(cryptoData.quote.USD.percent_change_24h) : "text-green-400"}`}
+              className={`text-2xl font-bold ${
+                cryptoData
+                  ? getChangeColorClass(cryptoData.quote.USD.percent_change_24h)
+                  : ""
+              }`}
             >
               {cryptoData
                 ? formatPercentChange(cryptoData.quote.USD.percent_change_24h)
-                : "+5.67%"}
+                : "-"}
             </p>
           </div>
-          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4">
+          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 hover:bg-white/10 transition-colors">
             <p className="text-sm text-white/70 mb-1">Market Cap</p>
             <p className="text-2xl font-bold">
               {cryptoData
                 ? formatMarketCap(cryptoData.quote.USD.market_cap)
-                : "$42.8M"}
+                : "-"}
             </p>
           </div>
         </div>
