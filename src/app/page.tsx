@@ -2,12 +2,16 @@ import { Button } from "@/components/ui/button";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { PriceTicker } from "@/components/PriceTicker";
 import { ArrowRight, BarChart3, Shield, Zap } from "lucide-react";
+import { FeaturesSection } from "@/components/home/features-section";
+import { EcosystemSection } from "@/components/home/ecosystem-section";
+import { RoadmapSection } from "@/components/home/roadmap-section";
+import { CommunitySection } from "@/components/home/community-section";
 
 export default function Page() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-black">
       {/* Navigation */}
-      <header className="container mx-auto py-6 px-4 flex justify-between items-center">
+      <header className="container mx-auto py-6 px-4 flex justify-between items-center sticky top-0 z-50 bg-black/80 backdrop-blur-sm">
         <div className="flex items-center gap-2">
           <div className="h-10 w-10 rounded-full bg-amber-500 flex items-center justify-center text-white font-bold overflow-hidden">
             <img
@@ -16,53 +20,53 @@ export default function Page() {
               className="w-full h-full object-cover"
             />
           </div>
-          <span className="font-display text-xl font-bold">KalyChain</span>
+          <span className="font-display text-xl font-bold text-white">KalyChain</span>
         </div>
         <div className="flex items-center gap-6">
           <nav className="hidden md:flex items-center gap-6">
             <a
-              href="#"
-              className="text-sm font-medium hover:text-primary transition-colors"
+              href="#features"
+              className="text-sm font-medium text-gray-300 hover:text-amber-400 transition-colors"
             >
-              Platform
+              Features
+            </a>
+            <a
+              href="#ecosystem"
+              className="text-sm font-medium text-gray-300 hover:text-amber-400 transition-colors"
+            >
+              Ecosystem
+            </a>
+            <a
+              href="#roadmap"
+              className="text-sm font-medium text-gray-300 hover:text-amber-400 transition-colors"
+            >
+              Roadmap
             </a>
             <a
               href="#"
-              className="text-sm font-medium hover:text-primary transition-colors"
-            >
-              Solutions
-            </a>
-            <a
-              href="#"
-              className="text-sm font-medium hover:text-primary transition-colors"
-            >
-              Tokenomics
-            </a>
-            <a
-              href="#"
-              className="text-sm font-medium hover:text-primary transition-colors"
+              className="text-sm font-medium text-gray-300 hover:text-amber-400 transition-colors"
             >
               Developers
             </a>
             <a
               href="#"
-              className="text-sm font-medium hover:text-primary transition-colors"
+              className="text-sm font-medium text-gray-300 hover:text-amber-400 transition-colors"
             >
               About
             </a>
           </nav>
           <div className="flex items-center gap-3">
             <ThemeSwitcher />
-            <Button size="sm" variant="outline" className="hidden md:flex">
+            <Button size="sm" variant="outline" className="hidden md:flex border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white">
               Sign In
             </Button>
-            <Button size="sm">Get Started</Button>
+            <Button size="sm" className="bg-amber-500 text-black hover:bg-amber-600">Get Started</Button>
           </div>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="gradient-bg py-20 md:py-32 flex-grow flex items-center relative overflow-hidden">
+      <section className="gradient-bg pt-20 pb-32 md:pt-24 md:pb-40 flex-grow flex items-center relative overflow-hidden">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-amber-500/30 via-primary-800/40 to-primary-950/50 mix-blend-multiply"></div>
           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1639322537228-f710d846310a?w=1200&q=80')] bg-cover bg-center opacity-20"></div>
@@ -87,7 +91,7 @@ export default function Page() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
               <Button
                 size="lg"
-                className="bg-amber-500 text-white hover:bg-amber-600 hover-lift border-none"
+                className="bg-amber-500 text-black hover:bg-amber-600 hover-lift border-none"
               >
                 Start Building <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -104,16 +108,16 @@ export default function Page() {
             <PriceTicker />
 
             {/* Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-white">
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/5">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-white mt-16">
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/5 hover-lift-light">
                 <p className="text-3xl font-bold">$1.2B+</p>
                 <p className="text-sm text-white/70">Total Value Locked</p>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/5">
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/5 hover-lift-light">
                 <p className="text-3xl font-bold">12M+</p>
                 <p className="text-sm text-white/70">Transactions</p>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/5">
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/5 hover-lift-light">
                 <p className="text-3xl font-bold">120+</p>
                 <p className="text-sm text-white/70">Global Partners</p>
               </div>
@@ -122,55 +126,26 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-20 bg-card">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Enterprise-Grade Infrastructure
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Built for the demands of modern financial applications with
-              security and scalability at its core.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-background rounded-xl p-8 shadow-sm hover-lift">
-              <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-6">
-                <Zap className="h-6 w-6" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Lightning Fast</h3>
-              <p className="text-muted-foreground">
-                Process thousands of transactions per second with near-instant
-                finality and minimal fees.
-              </p>
-            </div>
-
-            <div className="bg-background rounded-xl p-8 shadow-sm hover-lift">
-              <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-6">
-                <Shield className="h-6 w-6" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Bank-Grade Security</h3>
-              <p className="text-muted-foreground">
-                Enterprise-level security with multi-layered protection and
-                regular security audits.
-              </p>
-            </div>
-
-            <div className="bg-background rounded-xl p-8 shadow-sm hover-lift">
-              <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-6">
-                <BarChart3 className="h-6 w-6" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Advanced Analytics</h3>
-              <p className="text-muted-foreground">
-                Real-time insights and powerful analytics tools to monitor
-                performance and optimize operations.
-              </p>
-            </div>
-          </div>
+      {/* New Sections Integrated */}
+      <main>
+        <div id="features">
+           <FeaturesSection />
         </div>
-      </section>
+        <div id="ecosystem">
+          <EcosystemSection />
+        </div>
+        <div id="roadmap">
+          <RoadmapSection />
+        </div>
+        <CommunitySection />
+      </main>
+
+      {/* Footer Section (Placeholder - Add later if needed) */}
+      <footer className="py-10 bg-black border-t border-gray-800/50">
+        <div className="container mx-auto px-4 text-center text-gray-500 text-sm">
+          © {new Date().getFullYear()} KalyChain. All rights reserved.
+        </div>
+      </footer>
     </div>
   );
 }

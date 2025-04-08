@@ -72,15 +72,15 @@ export function PriceTicker({
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
           <div className="h-8 w-8 rounded-full bg-amber-500 flex items-center justify-center overflow-hidden">
-            <img
-              src="https://i.imgur.com/qjwCshF.png"
-              alt="KalyCoin"
-              className="w-full h-full object-cover"
-            />
+            <span className="font-bold text-white">K</span>
           </div>
-          <h3 className="text-xl font-bold text-white">KalyCoin (KLC)</h3>
+          <div>
+            <h3 className="font-bold text-white">
+              {cryptoData?.name || "KalyCoin"}
+            </h3>
+            <p className="text-sm text-white/60">{symbol}</p>
+          </div>
         </div>
-
         {lastUpdated && (
           <div className="flex items-center gap-2 text-xs text-white/60">
             <button
@@ -109,17 +109,20 @@ export function PriceTicker({
             Try Again
           </button>
         </div>
-      ) : loading && !cryptoData ? (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-white">
-          {[1, 2, 3].map((i) => (
-            <div
-              key={i}
-              className="bg-white/5 backdrop-blur-sm rounded-xl p-4 animate-pulse"
-            >
-              <div className="h-4 bg-white/20 rounded mb-2 w-20"></div>
-              <div className="h-8 bg-white/20 rounded w-24"></div>
-            </div>
-          ))}
+      ) : loading ? (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-white animate-pulse">
+          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4">
+            <div className="h-4 bg-white/10 rounded mb-2 w-20"></div>
+            <div className="h-8 bg-white/10 rounded w-32"></div>
+          </div>
+          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4">
+            <div className="h-4 bg-white/10 rounded mb-2 w-20"></div>
+            <div className="h-8 bg-white/10 rounded w-32"></div>
+          </div>
+          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4">
+            <div className="h-4 bg-white/10 rounded mb-2 w-20"></div>
+            <div className="h-8 bg-white/10 rounded w-32"></div>
+          </div>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-white">
