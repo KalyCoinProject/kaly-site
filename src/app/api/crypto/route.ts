@@ -69,7 +69,7 @@ export async function GET(request: Request) {
     // Return fallback data on error
     return NextResponse.json({
       id: 0,
-      name: "KalyCoin",
+      name: "KalyChain",
       symbol: "KLC",
       quote: {
         USD: {

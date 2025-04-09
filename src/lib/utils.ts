@@ -79,7 +79,7 @@ const CACHE_DURATION = 300000; // 5 minutes cache
 // Fallback data for when API fails
 const FALLBACK_DATA: CoinMarketCapData = {
   id: 0,
-  name: "KalyCoin",
+  name: "KalyChain",
   symbol: "KLC",
   quote: {
     USD: {

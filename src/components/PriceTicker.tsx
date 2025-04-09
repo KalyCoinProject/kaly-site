@@ -71,19 +71,19 @@ export function PriceTicker({
   return (
     <div className={cn("bg-black/30 backdrop-blur-md rounded-2xl p-6 mb-12 border border-white/10 shadow-xl hover:border-white/20 transition-colors", className)}>
       <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-2">
-          <div className="h-8 w-8 rounded-full bg-amber-500 flex items-center justify-center overflow-hidden">
+        <div className="flex items-center gap-3">
+          <div className="h-10 w-10 rounded-full bg-amber-500 flex items-center justify-center overflow-hidden -mt-0.5">
             <Image 
               src="/images/klc.png" 
               alt="KalyChain Logo" 
-              width={28} 
-              height={28} 
+              width={36} 
+              height={36} 
               className="object-contain"
             />
           </div>
           <div>
-            <h3 className="font-bold text-white">
-              {cryptoData?.name || "KalyCoin"}
+            <h3 className="font-bold text-white text-lg">
+              {cryptoData?.name || "KalyChain"}
             </h3>
             <p className="text-sm text-white/60">{symbol}</p>
           </div>
