@@ -114,14 +114,6 @@ export default function Page() {
               </Button>
             </div>
 
-            {/* For developers - connect to testnet */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold text-white mb-4">For Developers</h3>
-              <div className="flex justify-center">
-                <AddToWalletButton chainType="testnet" />
-              </div>
-            </div>
-
             {/* Live Price Ticker */}
             <PriceTicker />
 

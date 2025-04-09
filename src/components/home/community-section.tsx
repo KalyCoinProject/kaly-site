@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
 import { FaDiscord, FaTelegram, FaGithub, FaTwitter } from "react-icons/fa";
+import { AddToWalletButton } from "@/components/wallet/AddToWalletButton";
 
 // Use logos with text for all partners
 const partners: { name: string; logoUrl: string; url: string; className?: string }[] = [
@@ -86,6 +87,15 @@ export function CommunitySection() {
             Connect with developers, users, and enthusiasts in the KalyChain
             ecosystem.
           </p>
+          
+          {/* For Developers section */}
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold text-white mb-4">For Developers</h3>
+            <div className="flex justify-center">
+              <AddToWalletButton chainType="testnet" />
+            </div>
+          </div>
+          
           <Button
             size="lg"
             className="bg-amber-500 text-white hover:bg-amber-600 hover-lift border-none"
