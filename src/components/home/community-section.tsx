@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
 import { FaDiscord, FaTelegram, FaGithub, FaTwitter } from "react-icons/fa";
 import { AddToWalletButton } from "@/components/wallet/AddToWalletButton";
+import Image from "next/image";
 
 // Use logos with text for all partners
 const partners: { name: string; logoUrl: string; url: string; className?: string }[] = [
@@ -91,8 +92,51 @@ export function CommunitySection() {
           {/* For Developers section */}
           <div className="mb-8">
             <h3 className="text-xl font-semibold text-white mb-4">For Developers</h3>
-            <div className="flex justify-center">
-              <AddToWalletButton chainType="testnet" />
+            <div className="flex flex-col items-center gap-4 mb-6">
+              <p className="text-gray-400 mb-2">Connect to TestNet</p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <div className="flex flex-col items-center">
+                  <Button
+                    size="lg"
+                    className="bg-amber-600 text-white hover:bg-amber-700 hover-lift border-none flex items-center gap-2"
+                    asChild
+                  >
+                    <a href="#" onClick={(e) => { 
+                      e.preventDefault(); 
+                      const connectButton = document.querySelector('[data-testid="rk-connect-button"]');
+                      if (connectButton instanceof HTMLElement) {
+                        connectButton.click();
+                      }
+                    }}>
+                      <div className="bg-white rounded-full p-1 flex items-center justify-center mr-1">
+                        <Image src="/images/metamask.png" alt="MetaMask" width={20} height={20} />
+                      </div>
+                      <span>Connect Wallet</span>
+                    </a>
+                  </Button>
+                </div>
+                
+                <div className="flex flex-col items-center">
+                  <Button
+                    size="lg"
+                    className="bg-amber-600 text-white hover:bg-amber-700 hover-lift border-none flex items-center gap-2"
+                    asChild
+                  >
+                    <a href="https://testnet.kalyscan.io/" target="_blank" rel="noopener noreferrer">
+                      <div className="bg-white rounded-full p-1 flex items-center justify-center mr-1">
+                        <Image src="/images/klc.png" alt="KLC" width={20} height={20} />
+                      </div>
+                      <span>TestNet Explorer</span>
+                      <ArrowUpRight className="h-4 w-4 ml-1" />
+                    </a>
+                  </Button>
+                </div>
+              </div>
+              
+              {/* Hidden actual wallet button for functionality */}
+              <div className="hidden">
+                <AddToWalletButton chainType="testnet" />
+              </div>
             </div>
           </div>
           
