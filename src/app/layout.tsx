@@ -7,8 +7,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Tempo - Modern SaaS Starter",
-  description: "A modern full-stack starter template powered by Next.js",
+  title: "KalyChain - Enterprise-Grade Blockchain",
+  description: "KalyChain is a modern enterprise-grade blockchain platform that enables businesses to build, deploy, and scale blockchain applications with ease.",
 };
 
 export default function RootLayout({
