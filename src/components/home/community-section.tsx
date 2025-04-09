@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight, Github, MessageSquare, MessageCircle, Twitter } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import { FaDiscord, FaTelegram, FaGithub, FaTwitter } from "react-icons/fa";
 
 // Use logos with text for all partners
 const partners: { name: string; logoUrl: string; url: string; className?: string }[] = [
@@ -104,7 +105,7 @@ export function CommunitySection() {
               className="p-3 rounded-full bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 transition-all duration-300"
               aria-label="Join our Discord"
             >
-              <MessageSquare className="h-6 w-6" />
+              <FaDiscord className="h-6 w-6" />
             </a>
             <a
               href="https://t.me/+yj8Ae9lNXmg1Yzkx"
@@ -113,7 +114,7 @@ export function CommunitySection() {
               className="p-3 rounded-full bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 transition-all duration-300"
               aria-label="Join our Telegram"
             >
-              <MessageCircle className="h-6 w-6" />
+              <FaTelegram className="h-6 w-6" />
             </a>
             <a
               href="https://github.com/KalyCoinProject"
@@ -122,7 +123,7 @@ export function CommunitySection() {
               className="p-3 rounded-full bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 transition-all duration-300"
               aria-label="View our GitHub"
             >
-              <Github className="h-6 w-6" />
+              <FaGithub className="h-6 w-6" />
             </a>
             <a
               href="https://twitter.com/KalyChain"
@@ -131,7 +132,7 @@ export function CommunitySection() {
               className="p-3 rounded-full bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 transition-all duration-300"
               aria-label="Follow us on Twitter"
             >
-              <Twitter className="h-6 w-6" />
+              <FaTwitter className="h-6 w-6" />
             </a>
           </div>
         </div>
