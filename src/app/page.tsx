@@ -6,6 +6,7 @@ import { FeaturesSection } from "@/components/home/features-section";
 import { EcosystemSection } from "@/components/home/ecosystem-section";
 import { RoadmapSection } from "@/components/home/roadmap-section";
 import { CommunitySection } from "@/components/home/community-section";
+import Image from "next/image";
 
 export default function Page() {
   return (
@@ -14,9 +15,11 @@ export default function Page() {
       <header className="container mx-auto py-6 px-4 flex justify-between items-center sticky top-0 z-50 bg-black/80 backdrop-blur-sm">
         <div className="flex items-center gap-2">
           <div className="h-10 w-10 rounded-full bg-amber-500 flex items-center justify-center text-white font-bold overflow-hidden">
-            <img
-              src="https://i.imgur.com/qjwCshF.png"
+            <Image
+              src="/images/klc.png"
               alt="KalyChain Logo"
+              width={40}
+              height={40}
               className="w-full h-full object-cover"
             />
           </div>
@@ -109,7 +112,7 @@ export default function Page() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white/10 hover-lift"
+                className="bg-white/15 border-amber-400 text-amber-100 hover:bg-white/25 hover:text-white hover-lift"
               >
                 View Documentation
               </Button>

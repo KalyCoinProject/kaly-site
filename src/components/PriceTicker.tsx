@@ -9,6 +9,7 @@ import {
 } from "@/lib/utils";
 import { RefreshCw } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 interface PriceTickerProps {
   symbol?: string;
@@ -72,7 +73,13 @@ export function PriceTicker({
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
           <div className="h-8 w-8 rounded-full bg-amber-500 flex items-center justify-center overflow-hidden">
-            <span className="font-bold text-white">K</span>
+            <Image 
+              src="/images/klc.png" 
+              alt="KalyChain Logo" 
+              width={28} 
+              height={28} 
+              className="object-contain"
+            />
           </div>
           <div>
             <h3 className="font-bold text-white">
