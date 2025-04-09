@@ -2,7 +2,7 @@ import { BarChart3, Gavel, Shield, Zap } from "lucide-react";
 
 export function FeaturesSection() {
   return (
-    <section className="py-20 bg-gradient-to-b from-black to-gray-900">
+    <section className="py-20 bg-gradient-to-b from-black via-stone-950 to-amber-500/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">

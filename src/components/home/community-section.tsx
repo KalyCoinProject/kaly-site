@@ -1,31 +1,31 @@
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
 
-// Placeholder logos - replace with actual SVGs or optimized images if available
+// Use local logos where available
 const partners = [
   {
     name: "CoinMarketCap",
-    logoUrl: "https://s2.coinmarketcap.com/static/cloud/img/coinmarketcap_1.svg?_=6377d6f", // Example URL, replace with better source
+    logoUrl: "/images/cmc-logo.svg", // Using local SVG
     url: "https://coinmarketcap.com/currencies/kalycoin/",
   },
   {
     name: "CoinGecko",
-    logoUrl: "https://static.coingecko.com/s/coingecko-logo-d13d6bcc0dbfa1336f3ac26fe398ab15361ce5853fa39079c04938e7ae4f10ba.svg", // Example URL
+    logoUrl: "/images/coingecko-logo.svg", // Using local SVG
     url: "https://www.coingecko.com/en/coins/kalychain",
   },
   {
     name: "Dex-Trade",
-    logoUrl: "https://dex-trade.com/img/logo_color.svg", // Example URL
+    logoUrl: "/images/dextrade-logo.svg", // Using local SVG
     url: "https://dex-trade.com/news/klc-will-be-listed-on-dex-trade",
   },
   {
     name: "Chainlist",
-    logoUrl: "https://chainlist.org/favicon.ico", // Example URL (using favicon)
+    logoUrl: "/images/chainlist-logo.svg", // Using local SVG
     url: "https://chainlist.org/chain/3888",
   },
   {
     name: "HyperLedger Besu",
-    logoUrl: "https://www.hyperledger.org/wp-content/uploads/2021/07/Hyperledger_Besu_horizontal.svg", // Example URL
+    logoUrl: "/images/besu-logo.svg", // Updated to local SVG
     url: "https://besu.hyperledger.org/",
   },
   // Add more partners/listings if needed
@@ -44,7 +44,8 @@ export function CommunitySection() {
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16 filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out">
+        {/* Adjusted Grid Layout & Removed Filters */}
+        <div className="grid grid-cols-3 lg:grid-cols-5 gap-10 md:gap-16 place-items-center">
           {partners.map((partner) => (
             <a
               key={partner.name}
@@ -52,12 +53,12 @@ export function CommunitySection() {
               target="_blank"
               rel="noopener noreferrer"
               title={`Visit ${partner.name}`}
-              className="flex items-center justify-center h-12 opacity-70 hover:opacity-100 transition-opacity duration-300"
+              className="flex items-center justify-center h-20 w-full opacity-80 hover:opacity-100 transition-opacity duration-300"
             >
               <img
                 src={partner.logoUrl}
                 alt={`${partner.name} Logo`}
-                className="max-h-full max-w-[150px] object-contain"
+                className="h-12 w-auto object-contain"
               />
             </a>
           ))}
