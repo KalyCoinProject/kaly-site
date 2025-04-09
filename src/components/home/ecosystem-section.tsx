@@ -1,44 +1,44 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Building2, Repeat, GitBranch, Search, Smartphone, BookOpen } from "lucide-react";
 
 const ecosystemApps = [
   {
     name: "KalyDAO",
     description: "Decentralized governance for the KalyChain ecosystem.",
     url: "https://dao.kalychain.io",
-    icon: "🏛️", // Placeholder icon
+    icon: Building2,
   },
   {
     name: "KalySwap",
     description: "Trade assets on the premier DEX built on KalyChain.",
     url: "https://kalyswap.io/",
-    icon: "🔄", // Placeholder icon
+    icon: Repeat,
   },
   {
     name: "KalyBridge",
     description:
       "Seamlessly bridge assets between KalyChain and other networks.",
     url: "https://bridge.kalychain.io/",
-    icon: "🌉", // Placeholder icon
+    icon: GitBranch,
   },
   {
     name: "KalyScan",
     description: "Explore blocks, transactions, and addresses on KalyChain.",
     url: "https://kalyscan.io/",
-    icon: "🔍", // Placeholder icon
+    icon: Search,
   },
   {
     name: "KalyPay",
     description: "Mobile wallet and payment solution for the Kaly ecosystem.",
     url: "https://kalypay.com/",
-    icon: "📱", // Placeholder icon
+    icon: Smartphone,
   },
   {
     name: "KalyChain Docs",
     description: "Comprehensive documentation for developers and users.",
     url: "https://docs.kalychain.io/",
-    icon: "📚", // Placeholder icon
+    icon: BookOpen,
   },
 ];
 
@@ -63,15 +63,16 @@ export function EcosystemSection() {
               className="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 text-white flex flex-col transform transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-500/10"
             >
               <CardHeader className="flex flex-row items-center gap-4 pb-4">
-                <div className="text-3xl">{app.icon}</div> {/* Basic icon */}
+                <div className="text-amber-500 p-2 rounded-full bg-gray-800/80">
+                  <app.icon size={24} />
+                </div>
                 <CardTitle className="text-xl font-bold">{app.name}</CardTitle>
               </CardHeader>
               <CardContent className="flex-grow flex flex-col justify-between">
                 <p className="text-gray-400 mb-6">{app.description}</p>
                 <Button
-                  variant="outline"
                   size="sm"
-                  className="mt-auto w-full border-amber-500 text-amber-400 hover:bg-amber-500/10 hover:text-amber-300 group"
+                  className="mt-auto w-full bg-amber-500/90 text-gray-900 font-medium hover:bg-amber-400 group"
                   asChild
                 >
                   <a href={app.url} target="_blank" rel="noopener noreferrer">
