@@ -1,15 +1,83 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
-import { ThemeSwitcher } from "@/components/theme-switcher";
 import { PriceTicker } from "@/components/PriceTicker";
-import { ArrowRight, BarChart3, Shield, Zap } from "lucide-react";
+import { ArrowRight, BarChart3, Shield, Zap, AlertCircle } from "lucide-react";
 import { FeaturesSection } from "@/components/home/features-section";
 import { EcosystemSection } from "@/components/home/ecosystem-section";
 import { RoadmapSection } from "@/components/home/roadmap-section";
 import { CommunitySection } from "@/components/home/community-section";
 import { KalyPaySection } from "@/components/home/kalypay-section";
 import Image from "next/image";
+import { useState } from "react";
+import { toast } from "@/components/ui/use-toast";
+import { ToastAction } from "@/components/ui/toast";
+
+// Add TypeScript declaration for window.ethereum
+declare global {
+  interface Window {
+    ethereum?: {
+      request: (args: { method: string; params?: any[] }) => Promise<any>;
+      isMetaMask?: boolean;
+    };
+  }
+}
 
 export default function Page() {
+  const [isMetaMaskLoading, setIsMetaMaskLoading] = useState(false);
+
+  const addNetworkToMetaMask = async () => {
+    setIsMetaMaskLoading(true);
+    
+    try {
+      // Check if MetaMask is installed
+      if (typeof window.ethereum === 'undefined') {
+        toast({
+          title: "MetaMask not installed",
+          description: "Please install MetaMask extension to add KalyChain network.",
+          action: (
+            <ToastAction altText="Install MetaMask" className="bg-amber-500 text-black">
+              <a href="https://metamask.io/download/" target="_blank" rel="noopener noreferrer">
+                Install
+              </a>
+            </ToastAction>
+          ),
+        });
+        return;
+      }
+
+      // KalyChain MainNet parameters
+      await window.ethereum.request({
+        method: 'wallet_addEthereumChain',
+        params: [{
+          chainId: '0xF30', // 3888 in hexadecimal
+          chainName: 'KalyChain MainNet',
+          nativeCurrency: {
+            name: 'KLC',
+            symbol: 'KLC',
+            decimals: 18
+          },
+          rpcUrls: ['https://rpc.kalychain.io/rpc'],
+          blockExplorerUrls: ['https://kalyscan.io']
+        }]
+      });
+      
+      toast({
+        title: "Success",
+        description: "KalyChain network has been added to your MetaMask",
+      });
+    } catch (error) {
+      console.error(error);
+      toast({
+        title: "Error",
+        description: "Failed to add KalyChain network to MetaMask",
+        variant: "destructive",
+      });
+    } finally {
+      setIsMetaMaskLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-black">
       {/* Navigation */}
@@ -55,32 +123,20 @@ export default function Page() {
               Roadmap
             </a>
             <a
-              href="#"
+              href="#community"
               className="text-sm font-medium text-gray-300 hover:text-amber-400 transition-colors"
             >
               Developers
             </a>
-            <a
-              href="#"
-              className="text-sm font-medium text-gray-300 hover:text-amber-400 transition-colors"
-            >
-              About
-            </a>
           </nav>
           <div className="flex items-center gap-3">
-            <ThemeSwitcher />
-            <Button
-              size="sm"
-              variant="outline"
-              className="hidden md:flex border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white"
-            >
-              Sign In
-            </Button>
             <Button
               size="sm"
               className="bg-amber-500 text-black hover:bg-amber-600"
+              onClick={addNetworkToMetaMask}
+              disabled={isMetaMaskLoading}
             >
-              Get Started
+              {isMetaMaskLoading ? "Adding..." : "Add to MetaMask"}
             </Button>
           </div>
         </div>
@@ -113,15 +169,21 @@ export default function Page() {
               <Button
                 size="lg"
                 className="bg-amber-500 text-black hover:bg-amber-600 hover-lift border-none"
+                asChild
               >
-                Start Building <ArrowRight className="ml-2 h-4 w-4" />
+                <a href="https://docs.kalychain.io/" target="_blank" rel="noopener noreferrer">
+                  Start Building <ArrowRight className="ml-2 h-4 w-4" />
+                </a>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
                 className="bg-white/15 border-amber-400 text-amber-100 hover:bg-white/25 hover:text-white hover-lift"
+                asChild
               >
-                View Documentation
+                <a href="https://docs.kalychain.io/" target="_blank" rel="noopener noreferrer">
+                  View Documentation
+                </a>
               </Button>
             </div>
 
@@ -161,7 +223,9 @@ export default function Page() {
         <div id="roadmap">
           <RoadmapSection />
         </div>
-        <CommunitySection />
+        <div id="community">
+          <CommunitySection />
+        </div>
       </main>
 
       {/* Footer Section (Placeholder - Add later if needed) */}
