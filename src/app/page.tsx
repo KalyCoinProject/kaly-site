@@ -6,6 +6,7 @@ import { FeaturesSection } from "@/components/home/features-section";
 import { EcosystemSection } from "@/components/home/ecosystem-section";
 import { RoadmapSection } from "@/components/home/roadmap-section";
 import { CommunitySection } from "@/components/home/community-section";
+import { KalyPaySection } from "@/components/home/kalypay-section";
 import Image from "next/image";
 
 export default function Page() {
@@ -34,6 +35,12 @@ export default function Page() {
               className="text-sm font-medium text-gray-300 hover:text-amber-400 transition-colors"
             >
               Features
+            </a>
+            <a
+              href="#kalypay"
+              className="text-sm font-medium text-gray-300 hover:text-amber-400 transition-colors"
+            >
+              KalyPay
             </a>
             <a
               href="#ecosystem"
@@ -144,6 +151,9 @@ export default function Page() {
       <main>
         <div id="features">
           <FeaturesSection />
+        </div>
+        <div id="kalypay">
+          <KalyPaySection />
         </div>
         <div id="ecosystem">
           <EcosystemSection />
