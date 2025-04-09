@@ -174,14 +174,15 @@
   /* Gradient animations */
   .gradient-bg {
     background: linear-gradient(
-      -45deg,
+      135deg,
+      hsl(var(--primary-800)),
       hsl(var(--primary-600)),
       hsl(var(--warning)),
       hsl(var(--accent)),
       hsl(var(--primary-700))
     );
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
+    background-size: 300% 300%;
+    animation: gradient 20s ease infinite;
   }
 
   @keyframes gradient {

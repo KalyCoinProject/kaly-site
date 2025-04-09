@@ -97,7 +97,8 @@ const config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-        "kaly-gradient": "linear-gradient(to right, #F59E0B, #F7931A, #3B82F6)",
+        "kaly-gradient":
+          "linear-gradient(135deg, #1E40AF, #3B82F6, #F59E0B, #F7931A, #3B82F6)",
       },
       borderRadius: {
         lg: "var(--radius)",

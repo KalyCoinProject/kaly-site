@@ -17,7 +17,8 @@ const ecosystemApps = [
   },
   {
     name: "KalyBridge",
-    description: "Seamlessly bridge assets between KalyChain and other networks.",
+    description:
+      "Seamlessly bridge assets between KalyChain and other networks.",
     url: "https://bridge.kalychain.io/",
     icon: "🌉", // Placeholder icon
   },
@@ -43,7 +44,7 @@ const ecosystemApps = [
 
 export function EcosystemSection() {
   return (
-    <section className="py-20 bg-gradient-to-b from-amber-500/30 via-stone-950 to-black">
+    <section className="py-20 bg-gradient-to-b from-amber-500/40 via-amber-600/10 to-black">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -85,4 +86,4 @@ export function EcosystemSection() {
       </div>
     </section>
   );
-} 
+}

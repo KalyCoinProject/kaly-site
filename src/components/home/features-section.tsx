@@ -2,7 +2,7 @@ import { BarChart3, Gavel, Shield, Zap } from "lucide-react";
 
 export function FeaturesSection() {
   return (
-    <section className="py-20 bg-gradient-to-b from-black via-stone-950 to-amber-500/30">
+    <section className="py-20 bg-gradient-to-b from-black via-stone-950/90 to-amber-500/40">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -21,11 +21,16 @@ export function FeaturesSection() {
             <div className="h-16 w-16 rounded-full bg-amber-500/10 flex items-center justify-center text-amber-400 mb-6 ring-2 ring-amber-500/30">
               <Zap className="h-8 w-8" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-3">Blazing Fast Speed</h3>
+            <h3 className="text-xl font-bold text-white mb-3">
+              Blazing Fast Speed
+            </h3>
             <p className="text-gray-400">
               Experience rapid transactions with our optimized network achieving
-              <span className="font-semibold text-amber-400"> 2-second block times</span>,
-              ideal for high-throughput applications.
+              <span className="font-semibold text-amber-400">
+                {" "}
+                2-second block times
+              </span>
+              , ideal for high-throughput applications.
             </p>
           </div>
 
@@ -34,9 +39,16 @@ export function FeaturesSection() {
             <div className="h-16 w-16 rounded-full bg-amber-500/10 flex items-center justify-center text-amber-400 mb-6 ring-2 ring-amber-500/30">
               <Shield className="h-8 w-8" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-3">Enterprise Security</h3>
+            <h3 className="text-xl font-bold text-white mb-3">
+              Enterprise Security
+            </h3>
             <p className="text-gray-400">
-              Built on <span className="font-semibold text-amber-400">HyperLedger Besu</span>, offering robust, enterprise-grade security features suitable for institutional adoption.
+              Built on{" "}
+              <span className="font-semibold text-amber-400">
+                HyperLedger Besu
+              </span>
+              , offering robust, enterprise-grade security features suitable for
+              institutional adoption.
             </p>
           </div>
 
@@ -45,9 +57,15 @@ export function FeaturesSection() {
             <div className="h-16 w-16 rounded-full bg-amber-500/10 flex items-center justify-center text-amber-400 mb-6 ring-2 ring-amber-500/30">
               <Gavel className="h-8 w-8" /> {/* Icon for Governance */}
             </div>
-            <h3 className="text-xl font-bold text-white mb-3">On-Chain Governance</h3>
+            <h3 className="text-xl font-bold text-white mb-3">
+              On-Chain Governance
+            </h3>
             <p className="text-gray-400">
-              Empowering the community with <span className="font-semibold text-amber-400">100% on-chain governance</span> through KalyDAO, ensuring truly decentralized decision-making.
+              Empowering the community with{" "}
+              <span className="font-semibold text-amber-400">
+                100% on-chain governance
+              </span>{" "}
+              through KalyDAO, ensuring truly decentralized decision-making.
             </p>
           </div>
         </div>
@@ -68,9 +86,10 @@ const hoverLiftLight = `
 `;
 
 // Inject styles (alternative to adding to globals.css)
-if (typeof window !== 'undefined') { // Check if running in browser
+if (typeof window !== "undefined") {
+  // Check if running in browser
   const styleSheet = document.createElement("style");
   styleSheet.type = "text/css";
   styleSheet.innerText = hoverLiftLight;
   document.head.appendChild(styleSheet);
-} 
+}
