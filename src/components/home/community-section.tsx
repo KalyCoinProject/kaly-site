@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Github, MessageSquare, MessageCircle, Twitter } from "lucide-react";
 
 // Use logos with text for all partners
 const partners: { name: string; logoUrl: string; url: string; className?: string }[] = [
@@ -17,7 +17,7 @@ const partners: { name: string; logoUrl: string; url: string; className?: string
     name: "Dex-Trade",
     logoUrl: "/images/dex-trade-logo.svg", // This is the correct logo
     url: "https://dex-trade.com/news/klc-will-be-listed-on-dex-trade",
-    className: "filter brightness-0 invert", // Added filter to make it visible on dark bg
+    className: "filter brightness-0 invert scale-150 transform", // Made logo larger
   },
   {
     name: "Chainlist",
@@ -88,10 +88,52 @@ export function CommunitySection() {
           <Button
             size="lg"
             className="bg-amber-500 text-white hover:bg-amber-600 hover-lift border-none"
+            asChild
           >
-            Explore Community Channels <ArrowUpRight className="ml-2 h-4 w-4" />
-            {/* TODO: Add actual link to community page/discord/telegram */}
+            <a href="https://discord.gg/4fDuS3cBJw" target="_blank" rel="noopener noreferrer">
+              Explore Community Channels <ArrowUpRight className="ml-2 h-4 w-4" />
+            </a>
           </Button>
+          
+          {/* Social Media Links */}
+          <div className="flex items-center justify-center gap-4 mt-8">
+            <a
+              href="https://discord.gg/4fDuS3cBJw"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-full bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 transition-all duration-300"
+              aria-label="Join our Discord"
+            >
+              <MessageSquare className="h-6 w-6" />
+            </a>
+            <a
+              href="https://t.me/+yj8Ae9lNXmg1Yzkx"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-full bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 transition-all duration-300"
+              aria-label="Join our Telegram"
+            >
+              <MessageCircle className="h-6 w-6" />
+            </a>
+            <a
+              href="https://github.com/KalyCoinProject"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-full bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 transition-all duration-300"
+              aria-label="View our GitHub"
+            >
+              <Github className="h-6 w-6" />
+            </a>
+            <a
+              href="https://twitter.com/KalyChain"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-full bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 transition-all duration-300"
+              aria-label="Follow us on Twitter"
+            >
+              <Twitter className="h-6 w-6" />
+            </a>
+          </div>
         </div>
       </div>
     </section>
