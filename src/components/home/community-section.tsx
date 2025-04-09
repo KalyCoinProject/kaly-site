@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
 
 // Use logos with text for all partners
-const partners = [
+const partners: { name: string; logoUrl: string; url: string; className?: string }[] = [
   {
     name: "CoinMarketCap",
     logoUrl: "/images/coinmarketcap-seeklogo.png", // Using logo with text
@@ -15,9 +15,9 @@ const partners = [
   },
   {
     name: "Dex-Trade",
-    logoUrl: "/images/dex-trade-logo.svg", // Using logo with text
+    logoUrl: "/images/dex-trade-logo.svg", // This is the correct logo
     url: "https://dex-trade.com/news/klc-will-be-listed-on-dex-trade",
-    className: "filter brightness-150 invert-[0.7]", // Making it lighter gray
+    className: "filter brightness-0 invert", // Added filter to make it visible on dark bg
   },
   {
     name: "Chainlist",
@@ -28,6 +28,7 @@ const partners = [
     name: "HyperLedger Besu",
     logoUrl: "/images/besu-logo.svg", // Using logo with text
     url: "https://besu.hyperledger.org/",
+    className: "filter brightness-0 invert", // Added filter to make it visible on dark bg
   },
   {
     name: "KalySwap",
@@ -59,9 +60,9 @@ export function CommunitySection() {
               target="_blank"
               rel="noopener noreferrer"
               title={`Visit ${partner.name}`}
-              className="flex flex-col items-center justify-center p-4 rounded-lg hover:bg-white/5 transition-all duration-300 w-full max-w-[200px]"
+              className="flex flex-col items-center justify-center p-4 rounded-lg hover:bg-white/5 transition-all duration-300 w-full max-w-[200px] border border-amber-500/20"
             >
-              <div className="h-16 flex items-center justify-center mb-3">
+              <div className="h-16 flex items-center justify-center mb-3 bg-amber-500/5 p-2 rounded-lg w-full">
                 <img
                   src={partner.logoUrl}
                   alt={`${partner.name} Logo`}
