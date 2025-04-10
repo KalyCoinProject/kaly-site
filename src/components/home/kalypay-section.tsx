@@ -8,13 +8,18 @@ export function KalyPaySection() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
-            <div className="mb-6">
+            <div className="mb-6 max-w-[300px]">
               <Image
                 src="/images/kalypay-logo.png"
                 alt="KalyPay Logo"
-                width={200}
-                height={60}
-                className="object-contain"
+                width={475}
+                height={442}
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  maxWidth: '475px'
+                }}
+                priority
               />
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
