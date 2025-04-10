@@ -38,6 +38,30 @@ const partners: { name: string; logoUrl: string; url: string; className?: string
     logoUrl: "/images/kalyswap-logo.svg", // Adding KalySwap with logo
     url: "https://kalyswap.io/",
   },
+  {
+    name: "ChangeNOW",
+    logoUrl: "/images/changenow-logo.svg",
+    url: "https://changenow.io",
+    className: "filter brightness-0 invert", // Make it visible on dark bg
+  },
+  {
+    name: "WhiteBIT",
+    logoUrl: "/images/whitebit-logo.svg",
+    url: "https://whitebit.com/trade/KLC-USDT?type=spot&tab=open-orders",
+    className: "filter brightness-0 invert", // Make it visible on dark bg
+  },
+  {
+    name: "Alchemy Pay",
+    logoUrl: "/images/alchemy-logo.svg",
+    url: "https://alchemypay.org/",
+    className: "filter brightness-0 invert", // Make it visible on dark bg
+  },
+  {
+    name: "Guarda",
+    logoUrl: "/images/guarda-logo.svg",
+    url: "https://guarda.com/",
+    className: "filter brightness-0 invert", // Make it visible on dark bg
+  },
 ];
 
 export function CommunitySection() {
@@ -55,7 +79,7 @@ export function CommunitySection() {
         </div>
 
         {/* Updated Grid Layout for Logos with Text */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 md:gap-12 place-items-center">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8 place-items-center">
           {partners.map((partner) => (
             <a
               key={partner.name}
