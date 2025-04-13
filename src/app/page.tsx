@@ -17,18 +17,27 @@ export default function Page() {
       {/* Navigation */}
       <header className="container mx-auto py-6 px-4 flex justify-between items-center sticky top-0 z-50 bg-black/80 backdrop-blur-sm">
         <div className="flex items-center gap-2">
-          <div className="h-10 w-10 rounded-full bg-amber-500 flex items-center justify-center text-white font-bold overflow-hidden">
-            <Image
-              src="/images/klc.png"
-              alt="KalyChain Logo"
-              width={40}
-              height={40}
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <span className="font-display text-xl font-bold text-white">
-            KalyChain
-          </span>
+          <a 
+            href="#" 
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+          >
+            <div className="h-10 w-10 rounded-full bg-amber-500 flex items-center justify-center text-white font-bold overflow-hidden">
+              <Image
+                src="/images/klc.png"
+                alt="KalyChain Logo"
+                width={40}
+                height={40}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <span className="font-display text-xl font-bold text-white">
+              KalyChain
+            </span>
+          </a>
         </div>
         <div className="flex items-center gap-6">
           <nav className="hidden md:flex items-center gap-6">
