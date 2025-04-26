@@ -35,7 +35,7 @@ const partners: { name: string; logoUrl: string; url: string; className?: string
   },
   {
     name: "KalySwap",
-    logoUrl: "/images/kalyswap-logo.svg", // Adding KalySwap with logo
+    logoUrl: "/images/kalyswap-logo.png", // Adding KalySwap with logo
     url: "https://kalyswap.io/",
   },
   {
